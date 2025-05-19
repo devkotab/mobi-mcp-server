@@ -38,8 +38,7 @@ async function transformTools(tools) {
 
 async function run() {
   const args = process.argv.slice(2);
-  const useStdio = args.includes("--stdio"); // NEW: use --stdio for local CLI
-  const useSSE = args.includes("--sse") || !useStdio; // Default to SSE if not using stdio
+  const isSSE = args.includes("--sse");
 
   const server = new Server(
     {
@@ -55,6 +54,7 @@ async function run() {
 
   server.onerror = (error) => console.error("[Error]", error);
 
+  // Gracefully shutdown on SIGINT
   process.on("SIGINT", async () => {
     await server.close();
     process.exit(0);
@@ -106,10 +106,7 @@ async function run() {
     }
   });
 
-  if (useStdio) {
-    const transport = new StdioServerTransport();
-    await server.connect(transport);
-  } else {
+  if (isSSE) {
     const app = express();
     const transports = {};
 
@@ -139,5 +136,10 @@ async function run() {
     app.listen(port, () => {
       console.log(`[SSE Server] running on port ${port}`);
     });
+  } else {
+    const transport = new StdioServerTransport();
+    await server.connect(transport);
   }
 }
+
+run().catch(console.error);
