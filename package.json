@@ -1,10 +1,14 @@
 {
-  "name": "mobi-mcp-tools",
+  "name": "mobi-mcp-server",
   "version": "1.0.0",
-  "description": "A simple MOBI POC MCP server",
+  "description": "MCP server for MOBI API tools",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "mobi-mcp-server": "./mcpServer.js"
+  },
   "scripts": {
+    "start": "node mcpServer.js",
     "list-tools": "node index.js tools"
   },
   "dependencies": {
@@ -16,5 +20,19 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "author": "Devkota, Bipin."
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devkotab/mobi-mcp-server.git"
+  },
+  "keywords": [
+    "mcp",
+    "mobi",
+    "modelcontextprotocol"
+  ],
+  "author": "Devkota, Bipin.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devkotab/mobi-mcp-server/issues"
+  },
+  "homepage": "https://github.com/devkotab/mobi-mcp-server#readme"
 }
