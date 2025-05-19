@@ -7,6 +7,7 @@
  */
 const executeFunction = async ({ headoffice }) => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
+  const cookie = process.env.MOBI_COOKIE;
   try {
     // Construct the URL with the head office path variable
     const url = `${baseUrl}/headoffice/${headoffice}/menu/products`;
@@ -15,7 +16,8 @@ const executeFunction = async ({ headoffice }) => {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+      'Cookie': `MOBI2GO_ADMIN=${cookie}`
       }
     });
 

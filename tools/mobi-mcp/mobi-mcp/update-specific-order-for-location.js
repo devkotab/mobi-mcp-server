@@ -10,9 +10,11 @@
  */
 const executeFunction = async ({ headoffice, location, id, attributes }) => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
+  const cookie = process.env.MOBI_COOKIE;
   const url = `${baseUrl}/headoffice/${headoffice}/locations/${location}/orders/${id}`;
   const headers = {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+      'Cookie': `MOBI2GO_ADMIN=${cookie}`
   };
   
   const body = JSON.stringify({ attributes });

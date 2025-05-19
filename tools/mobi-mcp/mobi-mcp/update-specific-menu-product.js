@@ -9,13 +9,14 @@
  */
 const executeFunction = async ({ headoffice, id, attributes }) => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
-  const token = process.env.MOBI_MCP_API_KEY;
+  const cookie = process.env.MOBI_COOKIE;
   const url = `${baseUrl}/headoffice/${headoffice}/menu/products/${id}`;
   
   try {
     // Set up headers for the request
     const headers = {
       'Content-Type': 'application/json',
+      'Cookie': `MOBI2GO_ADMIN=${cookie}`
     };
 
     // Prepare the body for the PUT request

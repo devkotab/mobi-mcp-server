@@ -28,5 +28,14 @@ export const toolPaths = [
   'mobi-mcp/mobi-mcp/update-or-redeem-customer-reward.js',
   'mobi-mcp/mobi-mcp/read-locations-for-headoffice.js',
   'mobi-mcp/mobi-mcp/get-specific-card-hold-for-group-tab-location.js',
-  'mobi-mcp/mobi-mcp/search-customers.js'
+  'mobi-mcp/mobi-mcp/search-customers.js',
+  'mobi-mcp/mobi-mcp/get-headoffice.js',
+  'mobi-mcp/mobi-mcp/get-payment-events-summary.js',
+  'mobi-mcp/mobi-mcp/get-specific-location.js',
+  'mobi-mcp/mobi-mcp/get-locations.js',
+  'mobi-mcp/mobi-mcp/create-menu-category.js',
+  'mobi-mcp/mobi-mcp/get-menu-categories.js',
+  'mobi-mcp/mobi-mcp/get-menu-category.js',
+  'mobi-mcp/mobi-mcp/update-menu-category.js',
+  'mobi-mcp/mobi-mcp/delete-menu-category.js'
 ];

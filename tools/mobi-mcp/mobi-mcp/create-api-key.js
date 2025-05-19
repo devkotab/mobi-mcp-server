@@ -7,14 +7,15 @@
  */
 const executeFunction = async ({ ttl }) => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
-  const apiKey = process.env.MOBI_MCP_API_KEY;
+  const cookie = process.env.MOBI_COOKIE;
   try {
     // Construct the URL for the API key creation
     const url = `${baseUrl}/account/keys`;
 
-    // Set up headers for the request
+    // Set up headers for the request including the cookie
     const headers = {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+     'Cookie': `MOBI2GO_ADMIN=${cookie}`
     };
 
     // Create the request body

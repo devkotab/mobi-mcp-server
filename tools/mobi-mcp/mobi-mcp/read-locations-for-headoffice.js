@@ -8,6 +8,7 @@
  */
 const executeFunction = async ({ headoffice, fields }) => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
+  const cookie = process.env.MOBI_COOKIE;
   const url = `${baseUrl}/headoffice/${headoffice}/locations`;
   
   // Construct query parameters if fields are provided
@@ -21,7 +22,8 @@ const executeFunction = async ({ headoffice, fields }) => {
     const response = await fetch(`${url}?${queryParams.toString()}`, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+      'Cookie': `MOBI2GO_ADMIN=${cookie}`
       }
     });
 

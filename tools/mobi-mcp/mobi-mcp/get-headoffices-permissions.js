@@ -5,20 +5,21 @@
  */
 const executeFunction = async () => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
-  const token = process.env.MOBI_MCP_API_KEY;
+  const cookie = process.env.MOBI_COOKIE;
   try {
     // Construct the URL for the request
     const url = `${baseUrl}/account/headoffices`;
 
     // Set up headers for the request
     const headers = {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cookie': `MOBI2GO_ADMIN=${cookie}`
     };
 
     // Perform the fetch request
     const response = await fetch(url, {
       method: 'GET',
-      headers
+      headers,
     });
 
     // Check if the response was successful
@@ -46,7 +47,7 @@ const apiTool = {
     type: 'function',
     function: {
       name: 'get_headoffices_permissions',
-      description: 'Get headoffices permissions for the account.',
+      description: 'Get headoffices that the account has permissions for.',
       parameters: {
         type: 'object',
         properties: {},

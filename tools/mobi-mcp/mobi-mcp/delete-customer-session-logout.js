@@ -7,6 +7,7 @@
  */
 const executeFunction = async ({ headoffice }) => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
+  const cookie = process.env.MOBI_COOKIE;
   const token = process.env.MOBI_MCP_API_KEY;
   try {
     // Construct the URL for the DELETE request
@@ -14,7 +15,8 @@ const executeFunction = async ({ headoffice }) => {
 
     // Set up headers for the request
     const headers = {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cookie': `MOBI2GO_ADMIN=${cookie}`
     };
 
     // Perform the fetch request

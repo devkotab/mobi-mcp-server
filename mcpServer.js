@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
-const SERVER_NAME = "generated-mcp-server";
+const SERVER_NAME = "mobi-mcp-server";
 
 async function transformTools(tools) {
   return tools

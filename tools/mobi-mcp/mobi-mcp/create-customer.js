@@ -8,6 +8,7 @@
  */
 const executeFunction = async ({ headoffice, customerData }) => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
+  const cookie = process.env.MOBI_COOKIE;
   const requestBody = JSON.stringify(customerData);
   
   try {
@@ -16,7 +17,8 @@ const executeFunction = async ({ headoffice, customerData }) => {
 
     // Set up headers for the request
     const headers = {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cookie': `MOBI2GO_ADMIN=${cookie}`
     };
 
     // Perform the fetch request

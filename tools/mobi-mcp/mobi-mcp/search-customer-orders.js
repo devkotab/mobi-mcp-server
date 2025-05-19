@@ -8,14 +8,15 @@
  */
 const executeFunction = async ({ headoffice, customer }) => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
-  const token = process.env.MOBI_MCP_API_KEY;
+  const cookie = process.env.MOBI_COOKIE;
   try {
     // Construct the URL with path variables
     const url = `${baseUrl}/headoffice/${headoffice}/customers/${customer}/orders`;
 
     // Set up headers for the request
     const headers = {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cookie': `MOBI2GO_ADMIN=${cookie}`
     };
 
     // Perform the fetch request
