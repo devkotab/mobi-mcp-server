@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 /**
  * Function to get headoffice information.
  *
