@@ -1,7 +1,7 @@
 {
-  "name": "postman-agent-generator-mcp",
+  "name": "mobi-mcp-tools",
   "version": "1.0.0",
-  "description": "A simple MCP server with packaged tools",
+  "description": "A simple MOBI POC MCP server",
   "main": "index.js",
   "type": "module",
   "scripts": {
