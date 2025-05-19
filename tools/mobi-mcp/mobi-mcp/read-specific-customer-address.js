@@ -33,7 +33,6 @@ const executeFunction = async ({ headoffice, customer, id }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error reading customer address:', error);
     return { error: 'An error occurred while reading the customer address.' };
   }
 };

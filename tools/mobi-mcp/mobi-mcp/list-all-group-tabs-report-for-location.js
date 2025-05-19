@@ -32,7 +32,6 @@ const executeFunction = async ({ headoffice, location }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error fetching group tabs report:', error);
     return { error: 'An error occurred while fetching the group tabs report.' };
   }
 };

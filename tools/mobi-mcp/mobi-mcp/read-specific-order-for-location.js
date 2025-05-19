@@ -36,7 +36,6 @@ const executeFunction = async ({ headoffice, location, id }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error reading order:', error);
     return { error: 'An error occurred while reading the order.' };
   }
 };

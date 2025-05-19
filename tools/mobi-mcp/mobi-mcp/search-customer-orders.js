@@ -35,7 +35,6 @@ const executeFunction = async ({ headoffice, customer }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error searching for customer orders:', error);
     return { error: 'An error occurred while searching for customer orders.' };
   }
 };

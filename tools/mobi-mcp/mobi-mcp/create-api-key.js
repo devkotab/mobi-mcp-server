@@ -38,7 +38,6 @@ const executeFunction = async ({ ttl }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error creating API key:', error);
     return { error: 'An error occurred while creating the API key.' };
   }
 };

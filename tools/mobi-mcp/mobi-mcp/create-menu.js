@@ -39,7 +39,6 @@ const executeFunction = async ({ headoffice, attributes }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error creating menu:', error);
     return { error: 'An error occurred while creating the menu.' };
   }
 };

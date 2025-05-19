@@ -32,7 +32,6 @@ const executeFunction = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error getting headoffices permissions:', error);
     return { error: 'An error occurred while getting headoffices permissions.' };
   }
 };

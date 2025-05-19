@@ -37,7 +37,6 @@ const executeFunction = async ({ headoffice, customer_id, data }) => {
     const responseData = await response.json();
     return responseData;
   } catch (error) {
-    console.error('Error updating or redeeming customer reward:', error);
     return { error: 'An error occurred while updating or redeeming the customer reward.' };
   }
 };

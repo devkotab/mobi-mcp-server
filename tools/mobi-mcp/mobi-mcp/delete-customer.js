@@ -35,7 +35,6 @@ const executeFunction = async ({ headoffice, customer }) => {
     // Return the response data
     return { status: response.status, message: 'Customer deleted successfully.' };
   } catch (error) {
-    console.error('Error deleting customer:', error);
     return { error: 'An error occurred while deleting the customer.' };
   }
 };

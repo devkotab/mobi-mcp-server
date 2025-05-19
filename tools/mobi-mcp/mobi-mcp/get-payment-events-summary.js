@@ -36,7 +36,6 @@ const getPaymentEventsSummary = async ({ headofficeId, offset = 0, limit = 100 }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error getting payment events summary:', error);
     return { error: 'An error occurred while getting the payment events summary.' };
   }
 };

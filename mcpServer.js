@@ -82,7 +82,7 @@ async function run() {
       if (!(requiredParameter in args)) {
         throw new McpError(
           ErrorCode.InvalidParams,
-          `Missing required parameter: ${requiredParameter}`
+          `Required parameter: ${requiredParameter}`
         );
       }
     }
@@ -98,7 +98,6 @@ async function run() {
         ],
       };
     } catch (error) {
-      console.error("[Error] Failed to fetch data:", error);
       throw new McpError(
         ErrorCode.InternalError,
         `API error: ${error.message}`

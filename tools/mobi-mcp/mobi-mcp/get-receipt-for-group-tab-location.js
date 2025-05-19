@@ -37,7 +37,6 @@ const executeFunction = async ({ headoffice, location, group_tab }) => {
     const data = await response.text();
     return data;
   } catch (error) {
-    console.error('Error getting receipt:', error);
     return { error: 'An error occurred while getting the receipt.' };
   }
 };

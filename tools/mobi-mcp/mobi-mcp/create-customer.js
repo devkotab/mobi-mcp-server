@@ -38,7 +38,6 @@ const executeFunction = async ({ headoffice, customerData }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error creating customer:', error);
     return { error: 'An error occurred while creating the customer.' };
   }
 };

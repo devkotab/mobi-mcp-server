@@ -39,7 +39,6 @@ const executeFunction = async ({ headoffice, id, attributes }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error updating menu product:', error);
     return { error: 'An error occurred while updating the menu product.' };
   }
 };

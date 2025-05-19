@@ -35,7 +35,6 @@ const executeFunction = async ({ headoffice, location }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error reading out of stock products:', error);
     return { error: 'An error occurred while reading out of stock products.' };
   }
 };

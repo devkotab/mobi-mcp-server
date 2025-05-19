@@ -37,7 +37,6 @@ const executeFunction = async ({ headoffice, fields }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error reading locations for headoffice:', error);
     return { error: 'An error occurred while reading locations for the headoffice.' };
   }
 };

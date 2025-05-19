@@ -24,7 +24,6 @@ const executeFunction = async ({ headoffice }) => {
     if (!response.ok) throw new Error(await response.text());
     return await response.json();
   } catch (error) {
-    console.error('Error getting menu categories:', error);
     return { error: 'An error occurred while fetching menu categories.' };
   }
 };

@@ -35,7 +35,6 @@ const executeFunction = async ({ headoffice }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error logging out customer session:', error);
     return { error: 'An error occurred while logging out the customer session.' };
   }
 };

@@ -36,7 +36,6 @@ const executeFunction = async ({ headoffice, report_type }) => {
     const data = await response.text();
     return data;
   } catch (error) {
-    console.error('Error fetching sales report:', error);
     return { error: 'An error occurred while fetching the sales report.' };
   }
 };

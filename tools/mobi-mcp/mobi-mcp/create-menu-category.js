@@ -26,7 +26,6 @@ const executeFunction = async ({ headoffice, body }) => {
     if (!response.ok) throw new Error(await response.text());
     return await response.json();
   } catch (error) {
-    console.error('Error creating menu category:', error);
     return { error: 'An error occurred while creating a menu category.' };
   }
 };

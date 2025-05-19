@@ -27,7 +27,6 @@ const executeFunction = async ({ headoffice, id, body }) => {
     if (!response.ok) throw new Error(await response.text());
     return await response.json();
   } catch (error) {
-    console.error('Error updating menu category:', error);
     return { error: 'An error occurred while updating the menu category.' };
   }
 };

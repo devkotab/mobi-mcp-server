@@ -26,7 +26,6 @@ const child = spawn(
 );
 
 child.on('error', (err) => {
-  console.error(`[mobi-mcp-server] Failed to start child process: ${err.message}`);
   process.exit(1);
 });
 

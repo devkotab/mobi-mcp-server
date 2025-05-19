@@ -34,7 +34,6 @@ const executeFunction = async ({ headoffice, location, group_tab, card_hold }) =
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error getting card hold details:', error);
     return { error: 'An error occurred while getting card hold details.' };
   }
 };

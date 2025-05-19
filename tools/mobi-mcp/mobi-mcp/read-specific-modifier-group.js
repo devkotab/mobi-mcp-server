@@ -32,7 +32,6 @@ const executeFunction = async ({ headoffice, id }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error reading modifier group:', error);
     return { error: 'An error occurred while reading the modifier group.' };
   }
 };

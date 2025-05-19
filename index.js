@@ -22,7 +22,6 @@ program.parse(process.argv);
 // you might need more conditional logic here.
 if (program.args.includes('server') || program.args.length === 0) { // Or based on your desired logic
   import("./mcpServer.js").catch(err => {
-    console.error("Failed to start MCP server:", err);
     process.exit(1);
   });
 }

@@ -35,7 +35,6 @@ const getLocation = async ({ headofficeId, locationId }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error getting location information:', error);
     return { error: 'An error occurred while getting location information.' };
   }
 };

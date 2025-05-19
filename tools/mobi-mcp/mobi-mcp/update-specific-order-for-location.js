@@ -37,7 +37,6 @@ const executeFunction = async ({ headoffice, location, id, attributes }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error updating order:', error);
     return { error: 'An error occurred while updating the order.' };
   }
 };
