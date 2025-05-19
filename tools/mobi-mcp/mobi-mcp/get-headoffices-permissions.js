@@ -6,6 +6,13 @@
 const executeFunction = async () => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
   const cookie = process.env.MOBI_COOKIE;
+
+
+  if (!cookie) {
+    return { error: 'MOBI_COOKIE is not set' };
+  }
+
+  
   try {
     // Construct the URL for the request
     const url = `${baseUrl}/account/headoffices`;
@@ -32,7 +39,7 @@ const executeFunction = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    return { error };
+    return { error: error.message, stack: error.stack };
   }
 };
 

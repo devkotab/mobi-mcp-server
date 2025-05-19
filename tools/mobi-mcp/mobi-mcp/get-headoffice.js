@@ -18,6 +18,14 @@ const getHeadoffice = async ({ headofficeId }) => {
       'Cookie': `MOBI2GO_ADMIN=${cookie}`
     };
 
+     if (!headofficeId) {
+    return { error: 'headofficeId is required' };
+  }
+
+  if (!cookie) {
+    return { error: 'MOBI_COOKIE is not set' };
+  }
+
     // Perform the fetch request
     const response = await fetch(url, {
       method: 'GET',
@@ -34,7 +42,7 @@ const getHeadoffice = async ({ headofficeId }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    return { error };
+    return { error: error.message, stack: error.stack };
   }
 };
 
