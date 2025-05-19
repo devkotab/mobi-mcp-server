@@ -1,6 +1,6 @@
 {
   "name": "@devkotab/mobi-poc-mcp-server",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "MCP server for MOBI API tools",
   "main": "index.js",
   "type": "module",
