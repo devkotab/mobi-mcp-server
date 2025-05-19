@@ -1,16 +1,41 @@
 #!/usr/bin/env node
 
-// check-node.js - Simple Node version checker and launcher
-const currentNodeVersion = process.versions.node;
-const [major] = currentNodeVersion.split('.');
-const requiredMajor = 18;
+import { spawn } from 'child_process';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
-if (parseInt(major, 10) < requiredMajor) {
-  console.error(`Error: This package requires Node.js version ${requiredMajor} or higher.`);
-  console.error(`You are running Node.js ${currentNodeVersion}.`);
-  console.error(`Please update your Node.js version and try again.`);
+// ES Module way to get __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Path to your main application script (which uses Commander)
+const mainScript = join(__dirname, 'index.js');
+
+const args = [
+  mainScript, // The script to run
+  ...process.argv.slice(2) // Pass along any arguments given to mobi-mcp-server
+];
+
+const child = spawn(
+  process.execPath, // This is the path to the current 'node' executable
+  args,
+  {
+    stdio: 'inherit', // Share stdin/stdout/stderr with the parent process
+    env: process.env  // Inherit environment variables
+  }
+);
+
+child.on('error', (err) => {
+  console.error(`[mobi-mcp-server] Failed to start child process: ${err.message}`);
   process.exit(1);
-}
+});
 
-// If Node version is OK, run the actual entry point
-require('./cli.cjs');
+child.on('close', (code) => {
+  // Exit with the same code as the child process
+  if (code !== null) {
+    process.exit(code);
+  } else {
+    // If code is null, it might mean the process was killed externally
+    process.exit(1); // Default to an error code
+  }
+});

@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { registerToolsCommand } from "./commands/tools.js";
+import { registerToolsCommand } from "./commands/tools.js"; // Assuming tools.js is also ESM
 
 const program = new Command();
 
@@ -11,16 +11,19 @@ program
   .command('server', { isDefault: true })
   .description('Start the MCP server (default when no command is specified)')
   .action(() => {
-    // Will run the server by importing it below
-    console.log("Starting MCP server...");
+    console.log("Starting MCP server via action (will also be started by direct import below)...");
   });
 
 // Parse arguments
 program.parse(process.argv);
 
-// Import server after parsing commands
-// This will run regardless of which command was executed
-import("./mcpServer.js").catch(err => {
-  console.error("Failed to start MCP server:", err);
-  process.exit(1);
-});
+// Dynamically import and start the server logic
+// This ensures mcpServer.js runs after command parsing, regardless of the command.
+// If a command like 'tools' has its own logic and should prevent server start,
+// you might need more conditional logic here.
+if (program.args.includes('server') || program.args.length === 0) { // Or based on your desired logic
+  import("./mcpServer.js").catch(err => {
+    console.error("Failed to start MCP server:", err);
+    process.exit(1);
+  });
+}
