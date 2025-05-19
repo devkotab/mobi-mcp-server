@@ -19,6 +19,9 @@ const __dirname = path.dirname(__filename);
 
 const SERVER_NAME = "mobi-mcp-server";
 
+ const cookieValue = process.env.MOBI_COOKIE || 'MOBI_COOKIE_NOT_SET_OR_UNDEFINED';
+console.error(`MOBI_COOKIE value (via console.error): ${cookieValue}`);
+
 async function transformTools(tools) {
   return tools
     .map((tool) => {
