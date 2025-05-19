@@ -27,7 +27,7 @@ To use this MCP server with Claude, add the following configuration to your Clau
 }
 ```
 
-### 
+### Follow logs in real-time for Claude
 
 ```
 tail -n 20 -F ~/Library/Logs/Claude/mcp*.log
