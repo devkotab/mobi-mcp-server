@@ -1,10 +1,12 @@
 {
-  "name": "postman-agent-generator-mcp",
+  "name": "mobi-mcp-server",
   "version": "1.0.0",
-  "description": "A simple MCP server with packaged tools",
+  "description": "A simple MCP MOBI server with packaged tools",
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node mcpServer.js",
+    "dev": "node mcpServer.js --stdio",
     "list-tools": "node index.js tools"
   },
   "dependencies": {
@@ -16,6 +18,5 @@
   "engines": {
     "node": ">=16.0.0"
   },
-  "author": "Postman, Inc.",
-  "license": "MIT"
+  "author": "Devkota, Bipin"
 }
