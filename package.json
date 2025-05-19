@@ -2,8 +2,11 @@
   "name": "mobi-mcp",
   "version": "1.0.0",
   "description": "A simple MCP server with packaged tools",
-  "main": "index.js",
   "type": "module",
+  "main": "index.js",
+  "bin": {
+    "mobi-mcp": "index.js"
+  },
   "scripts": {
     "list-tools": "node index.js tools"
   },
