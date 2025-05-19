@@ -1,52 +1,36 @@
 /**
  * Function to get headoffices permissions for the account.
  *
- * @returns {Promise<Object>} - The response containing headoffices permissions.
+ * @returns {Promise<Object>} - The response containing headoffices permissions or an error.
  */
 const executeFunction = async () => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
   const cookie = process.env.MOBI_COOKIE;
 
-
   if (!cookie) {
     return { error: 'MOBI_COOKIE is not set' };
   }
 
-  
   try {
-    // Construct the URL for the request
     const url = `${baseUrl}/account/headoffices`;
-
-    // Set up headers for the request
     const headers = {
       'Content-Type': 'application/json',
       'Cookie': `MOBI2GO_ADMIN=${cookie}`
     };
 
-    // Perform the fetch request
-    const response = await fetch(url, {
-      method: 'GET',
-      headers,
-    });
+    const response = await fetch(url, { method: 'GET', headers });
 
-    // Check if the response was successful
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData);
+      const errorText = await response.text();
+      throw new Error(`Failed with status ${response.status}: ${errorText}`);
     }
 
-    // Parse and return the response data
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     return { error: error.message, stack: error.stack };
   }
 };
 
-/**
- * Tool configuration for getting headoffices permissions.
- * @type {Object}
- */
 const apiTool = {
   function: executeFunction,
   definition: {

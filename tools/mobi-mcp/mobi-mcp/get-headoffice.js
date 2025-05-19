@@ -3,51 +3,40 @@
  *
  * @param {Object} args - Arguments for the function.
  * @param {string} args.headofficeId - The ID of the headoffice.
- * @returns {Promise<Object>} - The headoffice data.
+ * @returns {Promise<Object>} - The headoffice data or an error.
  */
 const getHeadoffice = async ({ headofficeId }) => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
   const cookie = process.env.MOBI_COOKIE;
-  try {
-    // Construct the URL
-    const url = `${baseUrl}/headoffice/${headofficeId}`;
 
-    // Set up headers for the request including the cookie
+  // Early validation
+  if (!headofficeId) {
+    return { error: 'headofficeId is required' };
+  }
+  if (!cookie) {
+    return { error: 'MOBI_COOKIE is not set' };
+  }
+
+  try {
+    const url = `${baseUrl}/headoffice/${headofficeId}`;
     const headers = {
       'Accept': 'application/json',
       'Cookie': `MOBI2GO_ADMIN=${cookie}`
     };
 
-     if (!headofficeId) {
-    return { error: 'headofficeId is required' };
-  }
+    const response = await fetch(url, { method: 'GET', headers });
 
-  if (!cookie) {
-    return { error: 'MOBI_COOKIE is not set' };
-  }
-
-    // Perform the fetch request
-    const response = await fetch(url, {
-      method: 'GET',
-      headers,
-    });
-
-    // Check if the response was successful
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData);
+      const errorText = await response.text();
+      throw new Error(`Failed with status ${response.status}: ${errorText}`);
     }
 
-    // Parse and return the response data
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     return { error: error.message, stack: error.stack };
   }
 };
 
-
-// Tool configurations
 const apiTool = {
   function: getHeadoffice,
   definition: {
@@ -69,4 +58,4 @@ const apiTool = {
   }
 };
 
-export {  apiTool };
+export { apiTool };
