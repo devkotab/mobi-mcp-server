@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "bin": {
-    "mobi-mcp": "index.js"
+    "mobi-mcp": "bin.js"
   },
   "scripts": {
     "list-tools": "node index.js tools"
