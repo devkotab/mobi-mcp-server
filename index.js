@@ -7,5 +7,3 @@ const program = new Command();
 registerToolsCommand(program);
 
 program.parse(process.argv);
-
-import "./mcpServer.js";
