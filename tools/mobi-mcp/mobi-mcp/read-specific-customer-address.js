@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to read a specific customer address from the MOBI MCP API.
  *

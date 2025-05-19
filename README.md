@@ -13,11 +13,11 @@ To use this MCP server with Claude, add the following configuration to your Clau
 ```json
 {
   "mcpServers": {
-    "mobi-mcp": {
+    "mobi-mcp-server": {
       "command": "npx",
       "args": [
         "-y",
-        "github:devkotab/mobi-mcp-server"
+        "@devkotab/mobi-poc-mcp-server"
       ],
       "env": {
         "MOBI_COOKIE": "your_mobi_cookie_here"
@@ -27,7 +27,7 @@ To use this MCP server with Claude, add the following configuration to your Clau
 }
 ```
 
-### Follow logs in real-time for Claude
+### Follow logs for Claude
 
 ```
 tail -n 20 -F ~/Library/Logs/Claude/mcp*.log

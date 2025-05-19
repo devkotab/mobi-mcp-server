@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to delete a customer session (logout) from the Mobi2Go API.
  *

@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to list all group tabs report for a specific location.
  *

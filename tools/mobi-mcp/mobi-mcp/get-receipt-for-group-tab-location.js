@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to get the HTML receipt for a group tab at a specific location.
  *

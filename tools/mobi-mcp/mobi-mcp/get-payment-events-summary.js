@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to get payment events summary.
  *

@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to get sales metrics for a specific location.
  *

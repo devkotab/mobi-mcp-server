@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to read menu products from a specified head office.
  *

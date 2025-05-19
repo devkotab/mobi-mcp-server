@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to update a specific modifier group in the Mobi2Go API.
  *

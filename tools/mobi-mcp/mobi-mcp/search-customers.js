@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to search for customers at a specific headoffice.
  *

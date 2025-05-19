@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to read locations for a specified headoffice.
  *

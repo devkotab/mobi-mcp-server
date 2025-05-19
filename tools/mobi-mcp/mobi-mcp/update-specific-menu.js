@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to update a specific menu in the MOBI MCP API.
  *

@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to create a new customer for the headoffice.
  *

@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to read out of stock products for a specific location.
  *

@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to delete a customer from the Mobi2Go API.
  *

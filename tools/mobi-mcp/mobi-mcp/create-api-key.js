@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to create a new API key for accessing the account.
  *

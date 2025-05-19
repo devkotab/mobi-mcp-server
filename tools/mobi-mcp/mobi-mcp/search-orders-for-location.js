@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to search orders for a specific location at a head office.
  *

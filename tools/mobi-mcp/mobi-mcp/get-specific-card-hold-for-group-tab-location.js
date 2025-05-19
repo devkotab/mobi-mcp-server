@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to get details of a specific card hold for a group tab (location).
  *

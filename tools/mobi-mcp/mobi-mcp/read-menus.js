@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to read menus from the Mobi2Go API.
  *

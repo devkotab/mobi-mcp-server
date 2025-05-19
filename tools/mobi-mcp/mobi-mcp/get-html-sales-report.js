@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 /**
  * Function to get the HTML sales report from the Mobi2Go API.
  *
