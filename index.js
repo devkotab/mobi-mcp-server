@@ -11,7 +11,6 @@ program
   .command('server', { isDefault: true })
   .description('Start the MCP server (default when no command is specified)')
   .action(() => {
-    console.log("Starting MCP server via action (will also be started by direct import below)...");
   });
 
 // Parse arguments
