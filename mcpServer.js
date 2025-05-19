@@ -20,12 +20,7 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
-const SERVER_NAME = "generated-mcp-server";
-
-console.log('=== MCP SERVER STARTING ===');
-console.log('Args:', process.argv);
-console.log('Env:', Object.keys(process.env).join(', '));
-console.log('MOBI_COOKIE exists:', !!process.env.MOBI_COOKIE);
+const SERVER_NAME = "mobi-mcp-server";
 
 async function transformTools(tools) {
   return tools
@@ -93,32 +88,23 @@ async function run() {
     }
 
     try {
-        const result = await tool.function(args);
-  if (result && result.error) {
-    // Handle returned error objects
-    console.error("[Error] Tool returned error:", result.message || "No error message");
-    throw new McpError(
-      ErrorCode.InternalError,
-      `API error: ${result.message || "Unknown error"}`
-    );
-  }
-  return {
-    content: [
-      {
-        type: "text",
-        text: JSON.stringify(result, null, 2),
-      },
-    ],
-  };
-} catch (error) {
-  // Handle thrown errors
-  console.error("[Error] Failed to fetch data:", error);
-  throw new McpError(
-    ErrorCode.InternalError,
-    `API error: ${error.message}`
-  );
-}
-});
+      const result = await tool.function(args);
+      return {
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      };
+    } catch (error) {
+      console.error("[Error] Failed to fetch data:", error);
+      throw new McpError(
+        ErrorCode.InternalError,
+        `API error: ${error.message}`
+      );
+    }
+  });
 
   if (isSSE) {
     const app = express();
