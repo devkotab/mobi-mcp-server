@@ -22,6 +22,12 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 const SERVER_NAME = "mobi-mcp-server";
 
+// At the beginning of mcpServer.js, ensure we capture the MOBI_COOKIE
+const mobiCookie = process.env.MOBI_COOKIE;
+if (mobiCookie) {
+  console.log(`MOBI_COOKIE environment variable is set: ${mobiCookie.substring(0, 5)}...`);
+}
+
 async function transformTools(tools) {
   return tools
     .map((tool) => {

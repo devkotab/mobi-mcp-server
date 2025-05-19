@@ -1,15 +1,11 @@
 {
-  "name": "mobi-mcp",
+  "name": "mobi-mcp-server",
   "version": "1.0.0",
-  "description": "A simple MCP server with packaged tools",
+  "description": "A simple MCP server",
   "type": "module",
-  "main": "index.js",
+  "main": "mcpServer.js",
   "bin": {
-    "mobi-mcp": "bin.js"
-  },
-  "scripts": {
-    "start": "node index.js server",
-    "list-tools": "node index.js tools"
+    "mobi-mcp-server": "cli.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.9.0",
