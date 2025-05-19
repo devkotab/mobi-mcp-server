@@ -6,33 +6,52 @@
 const executeFunction = async () => {
   const baseUrl = 'https://www.mobi2go.com/api/1';
   const cookie = process.env.MOBI_COOKIE;
+  
+  if (!cookie) {
+    throw new Error('MOBI_COOKIE environment variable is not set. Please provide a valid MOBI2GO_ADMIN cookie.');
+  }
+  
   try {
-    // Construct the URL for the request
     const url = `${baseUrl}/account/headoffices`;
 
-    // Set up headers for the request
     const headers = {
       'Content-Type': 'application/json',
       'Cookie': `MOBI2GO_ADMIN=${cookie}`
     };
 
-    // Perform the fetch request
     const response = await fetch(url, {
       method: 'GET',
       headers,
     });
 
-    // Check if the response was successful
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData);
+      const errorText = await response.text();
+      let errorMessage = `HTTP Error ${response.status}: ${response.statusText}`;
+      
+      try {
+        const errorData = JSON.parse(errorText);
+        if (errorData.error) {
+          errorMessage += ` - ${errorData.error}`;
+        } else if (errorData.message) {
+          errorMessage += ` - ${errorData.message}`;
+        } else {
+          errorMessage += ` - ${JSON.stringify(errorData)}`;
+        }
+      } catch (parseError) {
+        if (errorText) {
+          errorMessage += ` - ${errorText}`;
+        }
+      }
+      
+      throw new Error(errorMessage);
     }
 
-    // Parse and return the response data
     const data = await response.json();
     return data;
   } catch (error) {
-    return { error: 'An error occurred while getting headoffices permissions.' };
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    
+    throw new Error(`Failed to get headoffices permissions: ${errorMessage}`);
   }
 };
 
