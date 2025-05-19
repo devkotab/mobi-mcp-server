@@ -34,7 +34,7 @@ const getHeadoffice = async ({ headofficeId }) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    return { error: 'An error occurred while getting headoffice information.' };
+    return { error };
   }
 };
 
