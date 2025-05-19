@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
-const SERVER_NAME = "mobi-mcp-server";
+const SERVER_NAME = "generated-mcp-server";
 
 async function transformTools(tools) {
   return tools
@@ -82,7 +82,7 @@ async function run() {
       if (!(requiredParameter in args)) {
         throw new McpError(
           ErrorCode.InvalidParams,
-          `Required parameter: ${requiredParameter}`
+          `Missing required parameter: ${requiredParameter}`
         );
       }
     }
@@ -98,6 +98,7 @@ async function run() {
         ],
       };
     } catch (error) {
+      console.error("[Error] Failed to fetch data:", error);
       throw new McpError(
         ErrorCode.InternalError,
         `API error: ${error.message}`
@@ -133,7 +134,7 @@ async function run() {
 
     const port = process.env.PORT || 3001;
     app.listen(port, () => {
-
+      console.log(`[SSE Server] running on port ${port}`);
     });
   } else {
     const transport = new StdioServerTransport();
